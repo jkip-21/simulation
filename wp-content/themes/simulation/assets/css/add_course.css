@@ -1,0 +1,147 @@
+.container {
+    font-size: 13px;
+    overflow-x: hidden;
+    direction: ltr;
+    text-align: left;
+}
+.no-padding{
+    /* background: #090D5A; */
+    margin: 10px;
+}
+.menu-left{
+    background: #090D5A;
+    width:180px;
+    justify-content: center;
+}
+
+#main-header .search {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+#main-header .search input{
+    border: 2px solid #090D5A;
+    font-size: 15px;
+    font-weight: 500;
+    width: 25%;
+    border-radius:10px
+}
+#main-header .search button{
+    margin-left: 20px;
+    background-color: #090D5A;
+    border-radius:10px;
+    color: #fff;
+}
+
+ #main-header .icon:before {
+    line-height: 75px;
+    margin: 0 20px 0 30px;
+    font-size: 23px;
+} 
+
+
+
+.wrapper .menu-left { 
+     padding: 80px 20px; 
+     margin-left: -40px;  
+ }
+
+.wrapper .menu-left .list li {
+    align-content: center;
+    text-align: center;
+    width: 100%; 
+    margin: 20px 10px;
+    list-style: none;
+}
+
+.wrapper .menu-left .list p a {
+    display: flex;
+    flex-direction: column;
+    color: #ccc;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+
+
+.wrapper .menu-left .list li a.active .text {
+    color: #fff;
+}
+
+.wrapper .menu-left .list li a .icon:before {
+    margin: 0;
+    color: #777;
+    font-size: 28px;
+}
+
+.wrapper .menu-left .list li a .text {
+    margin: 10px 0;
+}
+
+.wrapper .main-content {
+    background: #ffffff;
+    position: relative;
+    right: -20px;
+}
+
+.wrapper .main-content .header-content {
+    display: flex;
+    justify-content: space-evenly;
+    background: #ffffff;
+}
+.wrapper .main-content .header-content .action a {
+    margin: 0 20px;
+}
+.header-content ul {
+    display: flex;
+}
+.form-field1{
+    margin: 20px;
+}
+.form-field2{
+    align-content: center;
+    margin: 20px;
+}
+.form-field3{
+    margin: 20px;
+}
+.btns-section{
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}
+.btn-sec2{
+    margin-left: 30px;
+}
+
+.btn-sec2 button{
+    margin-right: 30px;
+    width: 150px;
+}
+.complete{
+    background-color: #D8F3DC;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #090D5A;
+    text-align: center;
+}
+.pending{
+    background-color: #F8EDEB;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #090D5A;
+    text-align: center;
+}
+.inprogress{
+    background-color: #E9ECEF;
+    border-radius: 10px;
+    border: 2px solid #090D5A;
+    padding: 20px;
+    text-align: center;
+} 
+.menu{
+    width:180px;
+    text-align: center;
+    border: 2px solid #090D5A;
+}

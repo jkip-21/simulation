@@ -1,0 +1,12 @@
+###converting project to json
+
+GET http://localhost/wp/simulation/wp-json
+### Using post method
+POST http://localhost/wp/simulation/wp-json/projects/v1/api
+
+### Fetching contacts posts 
+GET http://localhost/wp/simulation/wp-json/contact/v1/api
+
+### Fetching projects posts
+
+GET http://localhost/wp/simulation/wp-json/projects/v1/api
