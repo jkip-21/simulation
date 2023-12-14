@@ -14,9 +14,7 @@ get_header();
 $errors = array();
 
 if (isset($_POST['register'])) {
-    if (isset($_POST['password']) && $_POST['password'] != $_POST['cpassword']) {
-        $errors[] = "Passwords do not match.";
-    }
+    
 
     if (empty($errors)) {
         $user_login = $_POST['username'];
@@ -92,30 +90,10 @@ if (isset($_POST['register'])) {
 <?php if (isset($success_message)) : ?>
     <?php echo $success_message; ?>
 <?php endif; ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="../wp-content/themes/simulation/assets/img/brand.jpg" alt="" height="100px">
 
-    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="http://127.0.0.1:8000/" style="text-decoration: none; color: #090D5A; margin-right: 40px;">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/#content" style="text-decoration: none; color: #090D5A; margin-right: 40px;">ABOUT US</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/contact-us/" style="text-decoration: none; color: #090D5A;margin-right: 40px;">CONTACT US</a>
-            </li>
-        </ul>
-        <div class="justify-content-end">
-            <a href="/wp/simulation/auth/"><button type="button" style="margin-right: 40px;" class="btn">LOGIN</button></a>
-        </div>
-    </div>
-</nav>
 <style>
     .box{
-        height: 140;
+        height: 100px;
     }
     .register {
         background: -webkit-linear-gradient(left, #3931af, #00c6ff);
@@ -271,13 +249,7 @@ if (isset($_POST['register'])) {
     }
 </style>
 <div class="container register">
-    <div class="row">
-        <div class="col-md-3 register-left">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <h3>Welcome</h3>
-            <p>You are 30 seconds away from earning your own money!</p>
-            <br />
-        </div>
+    
         <div class="col-md-9 register-right">
             <form action="http://127.0.0.1:8000/student-history/" method="post">
             <div class="tab-content" id="myTabContent">
@@ -310,7 +282,7 @@ if (isset($_POST['register'])) {
                             <div class='form-outline mb-4 '>
                                 <textarea class='form-control' id='textAreaExample6' name="courseExpectation" rows='3' placeholder="Your Expectations from this course..." required></textarea>
                             </div>
-                            <input type="submit" class="btnRegister" value="Next" />
+                            <input type="submit" class="btnRegister" value="Next" name="btnOrgInfo" />
                         </div>
                     </div>
                 </div>
@@ -323,52 +295,3 @@ if (isset($_POST['register'])) {
 </div>
 
 </div>
-<div class="box"></div>
-<?php
-get_footer();
-?>
-<?php
-// Establish a connection to MySQL
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "wordpress";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // Set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Check if email already exists
-    $email = $_POST['private_email'];
-    $check_query = $conn->prepare("SELECT * FROM your_table_name WHERE private_email = :email");
-    $check_query->bindParam(':email', $email);
-    $check_query->execute();
-    $existing_user = $check_query->fetch(PDO::FETCH_ASSOC);
-
-    if ($existing_user) {
-        echo "Email already exists. Cannot register again.";
-    } else {
-        // Prepare SQL statement to insert data into the database
-        $stmt = $conn->prepare("INSERT INTO students (orgName, posnOrg, roleDescription, lastAppointments, keyCompetences, futurePosn, courseExpectation, ) 
-        VALUES (:orgName, :posnOrg, :roleDescription, :lastAppointments, :keyCompetences, :futurePosn, :courseExpectation,)");
-
-        // Bind parameters
-        $stmt->bindParam(':orgName', $_POST['orgName']);
-        $stmt->bindParam(':posnOrg', $_POST['posnOrg']);
-        $stmt->bindParam(':roleDescription', $_POST['roleDescription']);
-        $stmt->bindParam(':lastAppointments', $_POST['lastAppointments']);
-        $stmt->bindParam(':keyCompetences', $_POST['keyCompetences']);
-        $stmt->bindParam(':futurePosn', $_POST['futurePosn']);
-        $stmt->bindParam(':courseExpectation', $_POST['courseExpectation']);
-
-
-        // Execute the SQL statement
-        $stmt->execute();
-
-        echo "Org data inserted successfully!";
-    }
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-?>

@@ -2,7 +2,6 @@
 /*
 Template Name: student-history
 */
-get_header();
 ?>
 
 <head>
@@ -87,27 +86,7 @@ if (isset($_POST['ipstcHistory'])) {
 <?php if (isset($success_message)) : ?>
     <?php echo $success_message; ?>
 <?php endif; ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="../wp-content/themes/simulation/assets/img/brand.jpg" alt="" height="100px">
 
-    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="http://127.0.0.1:8000/" style="text-decoration: none; color: #090D5A; margin-right: 40px;">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/#content" style="text-decoration: none; color: #090D5A; margin-right: 40px;">ABOUT US</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/contact-us/" style="text-decoration: none; color: #090D5A;margin-right: 40px;">CONTACT US</a>
-            </li>
-        </ul>
-        <div class="justify-content-end">
-            <a href="/wp/simulation/auth/"><button type="button" style="margin-right: 40px;" class="btn">LOGIN</button></a>
-        </div>
-    </div>
-</nav>
 <style>
     .box {
         height: 100px;
@@ -268,12 +247,7 @@ if (isset($_POST['ipstcHistory'])) {
 </style>
 <div class="container register">
     <div class="row">
-        <div class="col-md-3 register-left">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <h3>What is IPSTC?</h3>
-            <p>IPSTC-Kenya is a Government body that conducts training, education and research for military, police and civilians in all aspects of peace support.</p>
-            <br />
-        </div>
+        
         <div class="col-md-9 register-right">
 
 
@@ -282,29 +256,9 @@ if (isset($_POST['ipstcHistory'])) {
                     <h3 class="register-heading">Student IPSTC DATA</h3>
                     <div class="row register-form">
                         <div class="col-md-6">
-                            <h4>Have you attended a course in IPSTC before</h4>
-                            <div class="form-group mb-3">
-                                <form action="http://127.0.0.1:8000/" method="post">
-                                <div class="form-group mb-3">
-                                    <div class="maxl">
-                                        <label class="radio inline">
-                                            <input type="radio" name="choice" value="no" checked>
-                                            <span> No </span>
-                                        </label>
-                                        <label class="radio inline">
-                                            <input type="radio" name="choice" value="yes">
-                                            <span>Yes </span>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group mb-3" id="accountNameInput" style="display: none;">
-                                <h4>Provide your IPSTC online user Account</h4>
-                                    <input type="text" class="form-control" id="accountName" name="accountName"  placeholder="User Account Name">
-                                </div>
-                                <input type="submit" name="ipstcHistory" class="btnRegister" value="Next" />
-                                </form>
-                            </div>
+                            <h3>Welcome onboard!</h3>
+                            <h4> Thank you for filling our Biodata form.</h4>
+                            
   
                         </div>
                     </div>
@@ -316,11 +270,8 @@ if (isset($_POST['ipstcHistory'])) {
     </div>
 
 </div>
-<div class="box">
 
-</div>
 <?php
-get_footer();
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
