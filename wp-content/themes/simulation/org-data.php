@@ -279,18 +279,17 @@ if (isset($_POST['register'])) {
             <br />
         </div>
         <div class="col-md-9 register-right">
-
-
+            <form action="http://127.0.0.1:8000/student-history/" method="post">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading">Student Organizational Form</h3>
                     <div class="row register-form">
                         <div class="col-md-6">
                         <div class="form-group mb-3">
-                                <input type="text" name="orgName" class="form-control" placeholder="Org Name *" value="" />
+                                <input type="text" name="orgName" class="form-control" placeholder="Org Name *" value="" required/>
                             </div>
                             <div class="form-group mb-3">
-                                <input type="text" name="posnOrg" class="form-control" placeholder="Posn in Org *" value="" />
+                                <input type="text" name="posnOrg" class="form-control" placeholder="Posn in Org *" value="" required/>
                             </div>
                             <div class='form-outline mb-4 '>
                                 <textarea class='form-control' id='textAreaExample6' name="roleDescription" rows='3' placeholder="Enter role description..." required></textarea>
@@ -311,14 +310,13 @@ if (isset($_POST['register'])) {
                             <div class='form-outline mb-4 '>
                                 <textarea class='form-control' id='textAreaExample6' name="courseExpectation" rows='3' placeholder="Your Expectations from this course..." required></textarea>
                             </div>
-                            <a href="http://127.0.0.1:8000/student-history/">
                             <input type="submit" class="btnRegister" value="Next" />
-                            </a>
                         </div>
                     </div>
                 </div>
                
             </div>
+            </form>
         </div>
     </div>
 
@@ -328,4 +326,49 @@ if (isset($_POST['register'])) {
 <div class="box"></div>
 <?php
 get_footer();
+?>
+<?php
+// Establish a connection to MySQL
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "wordpress";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // Set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Check if email already exists
+    $email = $_POST['private_email'];
+    $check_query = $conn->prepare("SELECT * FROM your_table_name WHERE private_email = :email");
+    $check_query->bindParam(':email', $email);
+    $check_query->execute();
+    $existing_user = $check_query->fetch(PDO::FETCH_ASSOC);
+
+    if ($existing_user) {
+        echo "Email already exists. Cannot register again.";
+    } else {
+        // Prepare SQL statement to insert data into the database
+        $stmt = $conn->prepare("INSERT INTO students (orgName, posnOrg, roleDescription, lastAppointments, keyCompetences, futurePosn, courseExpectation, ) 
+        VALUES (:orgName, :posnOrg, :roleDescription, :lastAppointments, :keyCompetences, :futurePosn, :courseExpectation,)");
+
+        // Bind parameters
+        $stmt->bindParam(':orgName', $_POST['orgName']);
+        $stmt->bindParam(':posnOrg', $_POST['posnOrg']);
+        $stmt->bindParam(':roleDescription', $_POST['roleDescription']);
+        $stmt->bindParam(':lastAppointments', $_POST['lastAppointments']);
+        $stmt->bindParam(':keyCompetences', $_POST['keyCompetences']);
+        $stmt->bindParam(':futurePosn', $_POST['futurePosn']);
+        $stmt->bindParam(':courseExpectation', $_POST['courseExpectation']);
+
+
+        // Execute the SQL statement
+        $stmt->execute();
+
+        echo "Org data inserted successfully!";
+    }
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
 ?>

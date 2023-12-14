@@ -93,14 +93,14 @@ if (isset($_POST['ipstcHistory'])) {
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/wp/simulation/" style="text-decoration: none; color: #090D5A; margin-right: 40px;">HOME</a>
+                <a class="nav-link" href="http://127.0.0.1:8000/" style="text-decoration: none; color: #090D5A; margin-right: 40px;">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/wp/simulation/about-us" style="text-decoration: none; color: #090D5A; margin-right: 40px;">ABOUT US</a>
+                <a class="nav-link" href="http://127.0.0.1:8000/#content" style="text-decoration: none; color: #090D5A; margin-right: 40px;">ABOUT US</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/wp/simulation/contact/" style="text-decoration: none; color: #090D5A;margin-right: 40px;">CONTACT US</a>
+                <a class="nav-link" href="http://127.0.0.1:8000/contact-us/" style="text-decoration: none; color: #090D5A;margin-right: 40px;">CONTACT US</a>
             </li>
         </ul>
         <div class="justify-content-end">
@@ -110,7 +110,7 @@ if (isset($_POST['ipstcHistory'])) {
 </nav>
 <style>
     .box {
-        height: 140;
+        height: 100px;
     }
 
     .register {
@@ -284,6 +284,7 @@ if (isset($_POST['ipstcHistory'])) {
                         <div class="col-md-6">
                             <h4>Have you attended a course in IPSTC before</h4>
                             <div class="form-group mb-3">
+                                <form action="http://127.0.0.1:8000/" method="post">
                                 <div class="form-group mb-3">
                                     <div class="maxl">
                                         <label class="radio inline">
@@ -299,11 +300,10 @@ if (isset($_POST['ipstcHistory'])) {
                                 
                                 <div class="form-group mb-3" id="accountNameInput" style="display: none;">
                                 <h4>Provide your IPSTC online user Account</h4>
-                                    <input type="text" class="form-control" id="accountName" name="accountName" placeholder="User Account Name">
+                                    <input type="text" class="form-control" id="accountName" name="accountName"  placeholder="User Account Name">
                                 </div>
-                                <a href="http://127.0.0.1:8000/student-history/">
                                 <input type="submit" name="ipstcHistory" class="btnRegister" value="Next" />
-                                </a>
+                                </form>
                             </div>
   
                         </div>
@@ -316,7 +316,9 @@ if (isset($_POST['ipstcHistory'])) {
     </div>
 
 </div>
-<div class="box"></div>
+<div class="box">
+
+</div>
 <?php
 get_footer();
 ?>
